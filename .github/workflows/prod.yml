@@ -9,7 +9,7 @@ env:
   ACR_NAME: myacr  
   ACR_RESOURCE_GROUP: myacrresourcegroup
   
- jobs:
+jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
