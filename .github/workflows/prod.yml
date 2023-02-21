@@ -9,6 +9,10 @@ env:
   ACR_NAME: myacr  
   ACR_RESOURCE_GROUP: myacrresourcegroup
   
+permissions:
+  id-token: write
+  contents: read
+  
 jobs:
   deploy:
     runs-on: ubuntu-latest
