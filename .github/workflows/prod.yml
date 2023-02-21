@@ -43,9 +43,9 @@ jobs:
           push: true
           tags: oyohelm.azurecr.io/helmimage1:${{ github.sha }}
 #           tags: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
-          env:
-            DOCKER_BUILDKIT: 1
-            DOCKER_BUILD_ARGS: "--platform linux/amd64,linux/arm64/v8"
-            BUILDKIT_PROGRESS: plain
+#           env:
+#             DOCKER_BUILDKIT: 1
+#             DOCKER_BUILD_ARGS: "--platform linux/amd64,linux/arm64/v8"
+#             BUILDKIT_PROGRESS: plain
       
       
