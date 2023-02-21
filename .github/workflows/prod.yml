@@ -4,10 +4,10 @@ on:
   push:
     branches: [master]
     
-env:
-  IMAGE_NAME: myimage
-  ACR_NAME: myacr  
-  ACR_RESOURCE_GROUP: myacrresourcegroup
+# env:
+#   IMAGE_NAME: myimage
+#   ACR_NAME: myacr  
+#   ACR_RESOURCE_GROUP: myacrresourcegroup
   
 permissions:
   id-token: write
