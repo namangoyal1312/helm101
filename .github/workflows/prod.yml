@@ -1,0 +1,51 @@
+name: Deploy Helm chart to AKS
+
+on:
+  push:
+    branches: [master]
+    
+env:
+  IMAGE_NAME: myimage
+  ACR_NAME: myacr  
+  ACR_RESOURCE_GROUP: myacrresourcegroup
+  
+ jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZURE_CLIENT_ID }}
+          tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+          subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+#           creds: ${{ secrets.AZURE_CREDENTIALS }}
+          
+      - name: Login to Docker Hub
+        uses: docker/login-action@v2
+        with:
+          username: ngoyal400@gmail.com
+          password: Shamballa@12
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_TOKEN }}
+      
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+      
+      - name: Build and push
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          file: ./Dockerfile
+          push: true
+          tags: oyohelm.azurecr.io/helmimage1:${{ github.sha }}
+#           tags: ${{ env.ACR_NAME }}.azurecr.io/${{ env.IMAGE_NAME }}:${{ github.sha }}
+          env:
+            DOCKER_BUILDKIT: 1
+            DOCKER_BUILD_ARGS: "--platform linux/amd64,linux/arm64/v8"
+            BUILDKIT_PROGRESS: plain
+      
+      
