@@ -5,8 +5,9 @@
 replicaCount: 2
 
 image:
-  repository: ibmcom/guestbook
-  tag: v1
+  repository: oyohelm.azurecr.io/azurerepo1
+#   repository: ibmcom/guestbook
+  tag: fb76f443
   pullPolicy: Always
 
 # For some dev env (like minikube), you may need to set the type to NodePort
