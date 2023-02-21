@@ -37,7 +37,7 @@ jobs:
       - name: Azure Container Registry Build
         uses: Azure/acr-build@v1
         with:
-          service_principal: myApp
+          service_principal: 6e0261dd-af07-4c16-92be-414376256a00
           service_principal_password: 7TQ8Q~w.A9ZJSr1TFbXBVgh8OFcyP1OUbmDDwcyO
           tenant: 00709f29-2581-47e7-8b9e-1043015e06cd
           registry: oyohelm
